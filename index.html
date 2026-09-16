@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zion MCP Server Finder — Build your AI agent stack</title>
+<meta name="description" content="Discover and compare Model Context Protocol servers by tools, auth model, transport and popularity. Free tool by Zion Tech Group.">
+<style>
+:root{--bg:#0b1020;--card:#151b34;--acc:#6c8cff;--txt:#e8ecff;--mut:#9aa5c9}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+header{padding:48px 24px 24px;text-align:center;background:linear-gradient(160deg,#1a2350,#0b1020)}
+h1{margin:0 0 8px}header p{color:var(--mut);max-width:640px;margin:0 auto}
+.wrap{max-width:1000px;margin:0 auto;padding:24px}
+input[type=search]{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #2a3560;background:var(--card);color:var(--txt);font-size:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid #232c52;border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px}.card a{color:var(--acc);text-decoration:none}
+.badge{display:inline-block;background:#223;padding:2px 8px;border-radius:20px;font-size:.72rem;color:var(--mut);margin:2px 4px 2px 0}
+.meta{font-size:.8rem;color:var(--mut);margin-top:8px}
+footer{padding:32px 24px;text-align:center;color:var(--mut);font-size:.85rem;border-top:1px solid #1c2444;margin-top:40px}
+footer a{color:var(--acc);text-decoration:none;margin:0 8px}
+</style>
+</head>
+<body>
+<header><h1>🔌 Zion MCP Server Finder</h1>
+<p>Compare open-source Model Context Protocol servers by tools, auth model, transport and activity. Curated from live GitHub data (Sept 2026).</p></header>
+<div class="wrap">
+<input type="search" id="q" placeholder="Search servers, tools, auth models… (e.g. oauth, slack, stdio)">
+<div class="grid" id="grid"></div>
+</div>
+<footer>Part of the <a href="https://ziontechgroup.com">Zion Tech Group</a> AI apps network ·
+<a href="https://ziontechgroup.com/zion-llm-cost-calculator/">LLM Cost Calculator</a>
+<a href="https://ziontechgroup.com/zion-rag-eval-kit/">RAG Eval Kit</a>
+<a href="https://ziontechgroup.com/zion-ai-release-radar/">AI Release Radar</a>
+<a href="https://ziontechgroup.com/free-tools-hub/">All free tools</a></footer>
+<script>
+const S=[
+{n:'modelcontextprotocol/servers',t:'Reference collection: filesystem, memory, fetch, git, sequential-thinking',a:'Env-var API keys',tr:'stdio',s:90384,u:'2026-09-03'},
+{n:'github/github-mcp-server',t:'~100+ GitHub tools: repos, issues, PRs, actions, security',a:'OAuth or PAT / GitHub App',tr:'Remote + stdio/HTTP',s:32963,u:'2026-09-16'},
+{n:'microsoft/playwright-mcp',t:'Browser automation: navigate, click, snapshot, PDF, testing',a:'None (browser state)',tr:'stdio, SSE/HTTP',s:37173,u:'2026-09-14'},
+{n:'makenotion/notion-mcp-server',t:'22 tools: search, page/DB CRUD, markdown editing',a:'Integration token / OAuth',tr:'stdio + HTTP',s:4634,u:'2026-09-13'},
+{n:'grafana/mcp-grafana',t:'60+ observability tools: Prometheus, Loki, alerts, incidents',a:'Service account token',tr:'stdio, SSE, streamable-http',s:3461,u:'2026-09-16'},
+{n:'supabase/mcp',t:'SQL, tables, migrations, edge functions, branching',a:'OAuth 2.1 / PAT',tr:'Remote HTTP',s:2908,u:'2026-09-16'},
+{n:'stripe/ai (Agent Toolkit)',t:'Payments, customers, invoices, subscriptions, billing',a:'API key / OAuth',tr:'Remote + stdio',s:1821,u:'2026-09-16'},
+{n:'awslabs/mcp',t:'40+ AWS service servers: docs, Lambda, S3, EKS, cost',a:'AWS IAM credentials',tr:'stdio, streamable HTTP',s:9697,u:'2026-09-16'},
+{n:'cloudflare/mcp-server-cloudflare',t:'Workers, KV, R2, D1, Radar, browser rendering',a:'Cloudflare OAuth / API token',tr:'Streamable HTTP (/mcp)',s:4201,u:'2026-09-01'},
+{n:'korotovsky/slack-mcp-server',t:'Slack conversations, search, channels, usergroups, DMs',a:'xoxp / xoxb / xoxc+xoxd tokens',tr:'stdio, SSE, HTTP',s:1829,u:'2026-07-16'},
+{n:'docker/mcp-gateway',t:'Gateway aggregating many MCP servers, secrets, OAuth',a:'Docker secrets + OAuth',tr:'stdio, SSE, streaming',s:1567,u:'2026-08-26'},
+{n:'browserbase/mcp-server-browserbase',t:'6 browser tools via Stagehand (archived — use Playwright)',a:'API keys',tr:'stdio, SHTTP',s:3409,u:'2026-07-20'}];
+const g=document.getElementById('grid');
+function render(list){g.innerHTML=list.map(x=>`<div class="card"><h3><a href="https://github.com/${x.n.split(' ')[0]}" target="_blank">${x.n}</a></h3><div>${x.t}</div><div class="meta"><span class="badge">🔐 ${x.a}</span><span class="badge">🚚 ${x.tr}</span></div><div class="meta">⭐ ${x.s.toLocaleString()} · updated ${x.u}</div></div>`).join('');}
+render(S);
+document.getElementById('q').addEventListener('input',e=>{const q=e.target.value.toLowerCase();render(S.filter(x=>JSON.stringify(x).toLowerCase().includes(q)));});
+</script>
+</body>
+</html>
